@@ -4,6 +4,8 @@ import CreatePost from './views/CreatePost.vue'
 import Login from './views/Login.vue'
 import ColumnDetail from './views/ColumnDetail.vue'
 import PostDetail from './views/PostDetail.vue'
+import store from './store'
+import axios from "axios";
 
 const routerHistory = createWebHistory()
 const router = createRouter({
@@ -17,12 +19,14 @@ const router = createRouter({
     {
       path: '/create',
       name: 'create',
-      component: CreatePost
+      component: CreatePost,
+      meta: { requiredLogin: true }
     },
     {
       path: '/login',
       name: 'login',
-      component: Login
+      component: Login,
+      meta: { redirectAlreadyLogin: true }
     },
     {
       path: '/column/:id',
@@ -35,6 +39,39 @@ const router = createRouter({
       component: PostDetail
     }
   ]
+})
+
+router.beforeEach((to, _, next) => {
+  const { user, token } = store.state
+  const { requiredLogin, redirectAlreadyLogin } = to.meta
+  if (!user.isLogin) {
+    if (token) {
+      axios.defaults.headers.common.Authorization = `Bearer ${token}`
+      store.dispatch('fetchCurrentUser').then(() => {
+        if (redirectAlreadyLogin) {
+          next('/')
+        } else {
+          next()
+        }
+      }).catch(err => {
+        console.log('err', err)
+        store.commit('logout')
+        next('login')
+      })
+    } else {
+      if (requiredLogin) {
+        next('login')
+      } else {
+        next()
+      }
+    }
+  } else {
+    if (redirectAlreadyLogin) {
+      next('/')
+    } else {
+      next()
+    }
+  }
 })
 
 export default router
