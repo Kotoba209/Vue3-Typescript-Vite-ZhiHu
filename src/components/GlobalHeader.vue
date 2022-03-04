@@ -36,8 +36,8 @@
 import { defineComponent, PropType } from "vue"
 import { useStore } from "vuex"
 import { useRouter } from 'vue-router'
-import Dropdown from '../base/Dropdown.vue'
-import DropdownItem from '../base/DropdownItem.vue'
+import Dropdown from '@/components/Dropdown.vue'
+import DropdownItem from '@/components/DropdownItem.vue'
 import { GlobalDataProps, UserProps } from "../store/types"
 
 export default defineComponent({

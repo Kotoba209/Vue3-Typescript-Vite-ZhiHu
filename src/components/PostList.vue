@@ -26,12 +26,16 @@ import { defineComponent, PropType, computed } from 'vue'
 import { PostProps, ImageProps } from '@/store/types'
 import { generateFitUrl } from '@/libs/helper'
 
+interface CurPostProps extends PostProps {
+  image: ImageProps
+}
+
 export default defineComponent({
   name: 'PostList',
   props: {
     list: {
       required: true,
-      type: Array as PropType<PostProps[]>
+      type: Array as PropType<CurPostProps[]>
     }
   },
   setup (props) {

@@ -44,8 +44,8 @@ import { useStore } from 'vuex'
 import MarkdownIt from 'markdown-it'
 import { GlobalDataProps, PostProps, ImageProps, UserProps, ResponseType } from '@/store/types'
 import UserProfile from '@/components/UserProfile.vue'
-import Modal from '@/base/Modal.vue'
-import createMessage from '@/base/createMessage'
+import Modal from '@/components/Modal.vue'
+import createMessage from '@/components/createMessage'
 
 export default defineComponent({
   name: 'PostDetail',

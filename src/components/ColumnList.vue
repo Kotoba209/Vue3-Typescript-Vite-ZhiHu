@@ -26,7 +26,7 @@ export default defineComponent({
   name: 'ColumnList',
   props: {
     list: {
-      type: Array  as PropsType<ColumnList[]>,
+      type: Array  as PropType<ColumnProps[]>,
       required: true
     }
   },

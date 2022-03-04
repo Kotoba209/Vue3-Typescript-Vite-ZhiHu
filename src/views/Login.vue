@@ -33,10 +33,10 @@
 import { defineComponent, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
-import ValidateForm from '@/base/ValidateForm.vue';
-import ValidateInput, { RulesProps } from '@/base/ValidateInput.vue';
-import createMessage from '@/base/createMessage'
-import { create } from 'domain';
+import ValidateForm from '@/components/ValidateForm.vue';
+import ValidateInput, { RulesProps } from '@/components/ValidateInput.vue';
+import createMessage from '@/components/createMessage'
+// import { create } from 'domain';
 
 export default defineComponent({
   name: 'Login',

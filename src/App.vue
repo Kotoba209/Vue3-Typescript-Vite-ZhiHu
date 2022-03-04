@@ -28,8 +28,8 @@ import { useStore } from 'vuex';
 import { GlobalDataProps } from './store/types';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import GlobalHeader from './components/GlobalHeader.vue';
-import Loader from './base/Loader.vue';
-import createMessage from './base/createMessage'
+import Loader from '@/components/Loader.vue';
+import createMessage from '@/components/createMessage'
 export default defineComponent({
   name: 'App',
   components: {
